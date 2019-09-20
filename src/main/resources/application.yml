@@ -1,0 +1,47 @@
+
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+      ddl-auto: update
+    properties:
+      hibernate:
+        id.new_generator_mappings: false
+        use_sql_comments: true
+        format_sql: true
+        type: trace
+        temp.use_jdbc_metadata_defaults: false
+    show-sql: false
+
+  liquibase:
+    enabled: false
+
+server:
+  address: 0.0.0.0
+  port: 8090
+  servlet.session.cookie.name: xsession
+  forward-headers-strategy: framework
+
+---
+
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_db?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8
+    username: postgres
+    password: example
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:postgresql://257.354.485.23:5432/metro?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8
+    username: prohor
+    password: petrovich
