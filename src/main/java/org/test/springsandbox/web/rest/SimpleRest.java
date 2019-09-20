@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2017 - 2018 ICORE Software Development LLP
- * http://icode.kz
- */
 package org.test.springsandbox.web.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
