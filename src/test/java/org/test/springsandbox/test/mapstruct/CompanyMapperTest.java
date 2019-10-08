@@ -24,5 +24,21 @@ public class CompanyMapperTest {
 
         mapper.updateCompanyInfo(source, target);
         Assert.assertEquals(source.getName(), target.getCompanyName());
+
     }
+
+    @Test
+    public void inheritInverseConfigurationTest() {
+        CompanyMapper mapper = Mappers.getMapper(CompanyMapper.class);
+
+        CompanyDTO source = new CompanyDTO();
+        source.setCompanyName("company name");
+
+        Company target = new Company();
+        mapper.updateCompanyInfo(source, target);
+
+        Assert.assertEquals(source.getCompanyName(), target.getName());
+    }
+
+
 }

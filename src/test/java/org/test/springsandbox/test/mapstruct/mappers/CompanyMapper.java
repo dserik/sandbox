@@ -4,6 +4,7 @@
  */
 package org.test.springsandbox.test.mapstruct.mappers;
 
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -15,4 +16,7 @@ public interface CompanyMapper {
 
     @Mapping(target = "companyName", source = "name")
     void updateCompanyInfo(Company company, @MappingTarget CompanyDTO dto);
+
+    @InheritInverseConfiguration
+    void updateCompanyInfo(CompanyDTO dto, @MappingTarget Company entity);
 }
