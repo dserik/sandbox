@@ -14,6 +14,8 @@ public class PersonDTO {
     private String lastName;
     private String middleName;
 
+    private String positionName;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Date birthDate;
 }

@@ -7,16 +7,20 @@ package org.test.springsandbox.test.mapstruct;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.util.Pair;
+import org.test.springsandbox.domain.Person;
 import org.test.springsandbox.test.mapstruct.entities.Company;
 import org.test.springsandbox.test.mapstruct.entities.CompanyDTO;
 import org.test.springsandbox.test.mapstruct.mappers.CompanyMapper;
 
+import java.util.Collections;
+
 public class CompanyMapperTest {
+
+    private static final CompanyMapper mapper = Mappers.getMapper(CompanyMapper.class);
 
     @Test
     public void mappingTargetTest() {
-        CompanyMapper mapper = Mappers.getMapper(CompanyMapper.class);
-
         Company source = new Company();
         source.setName("test_name");
 
@@ -29,8 +33,6 @@ public class CompanyMapperTest {
 
     @Test
     public void inheritInverseConfigurationTest() {
-        CompanyMapper mapper = Mappers.getMapper(CompanyMapper.class);
-
         CompanyDTO source = new CompanyDTO();
         source.setCompanyName("company name");
 
@@ -40,5 +42,12 @@ public class CompanyMapperTest {
         Assert.assertEquals(source.getCompanyName(), target.getName());
     }
 
+    @Test
+    public void severalParameters() {
+        Company company = new Company();
+        company.setPersonList(new Person());
 
+        CompanyDTO dto = mapper.toDTO(company, "manager");
+        Assert.assertEquals("manager", dto.getPersonal().getPositionName());
+    }
 }
