@@ -1,4 +1,4 @@
-package org.test.springsandbox.service;
+package org.test.springsandbox.test.reactor;
 
 import org.junit.Test;
 import reactor.test.StepVerifier;
@@ -10,9 +10,9 @@ import java.util.Objects;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.*;
 
-public class FluxTestingTest {
+public class FluxServiceTest {
 
-    private FluxTesting fluxTesting = new FluxTesting();
+    private FluxService fluxTesting = new FluxService();
 
 
     @Test
@@ -55,7 +55,7 @@ public class FluxTestingTest {
                 .expectNoEvent(Duration.ofMillis(180))
                 .recordWith(ArrayList::new)
                 .thenConsumeWhile(Objects::nonNull)
-                .consumeRecordedWith(l -> assertTrue(FluxTesting.NAMES.containsAll(l)))
+                .consumeRecordedWith(l -> assertTrue(FluxService.NAMES.containsAll(l)))
                 .verifyComplete();
 
     }

@@ -1,4 +1,4 @@
-package org.test.springsandbox;
+package org.test.springsandbox.test.reactor;
 
 import org.junit.After;
 import org.junit.Test;

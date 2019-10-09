@@ -1,29 +1,27 @@
-package org.test.springsandbox.service;
+package org.test.springsandbox.test.reactor;
 
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
 
-@Service
-public class FluxTesting {
+class FluxService {
 
-    public static final Set<String> NAMES = new LinkedHashSet<>(Arrays.asList(
+    static final Set<String> NAMES = new LinkedHashSet<>(Arrays.asList(
             "Prohor", "Petrovick", "Victor", "Simon", "Rick", "Morty", "Beth", "Jerry", "Summer"
     ));
 
-    public Flux<Integer> twelveToZero() {
+    Flux<Integer> twelveToZero() {
         return Flux.range(0, 13)
                 .map(number -> 12 - number).checkpoint("numbers");
     }
 
-    public Flux<Integer> operateOnTwelveToZero(Function<Integer, Integer> operation) {
+    Flux<Integer> operateOnTwelveToZero(Function<Integer, Integer> operation) {
         return twelveToZero().map(operation).checkpoint("mapped");
     }
 
-    public Flux<String> namesPer200Millisecond() {
+    Flux<String> namesPer200Millisecond() {
         List<String> randomizedNames = new ArrayList<>(NAMES);
         Collections.reverse(randomizedNames);
 
