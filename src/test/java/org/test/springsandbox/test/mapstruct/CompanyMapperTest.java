@@ -1,23 +1,22 @@
-/*
- * Copyright (c) 2017 - 2018 ICORE Software Development LLP
- * http://icode.kz
- */
 package org.test.springsandbox.test.mapstruct;
 
+import org.jglue.cdiunit.CdiRunner;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mapstruct.factory.Mappers;
-import org.springframework.data.util.Pair;
+import org.junit.runner.RunWith;
 import org.test.springsandbox.domain.Person;
 import org.test.springsandbox.test.mapstruct.entities.Company;
 import org.test.springsandbox.test.mapstruct.entities.CompanyDTO;
-import org.test.springsandbox.test.mapstruct.mappers.CompanyMapper;
+import org.test.springsandbox.test.mapstruct.mappers.CompanyMapperImpl;
 
-import java.util.Collections;
+import javax.inject.Inject;
 
+
+@RunWith(CdiRunner.class)
 public class CompanyMapperTest {
 
-    private static final CompanyMapper mapper = Mappers.getMapper(CompanyMapper.class);
+    @Inject
+    private CompanyMapperImpl mapper;
 
     @Test
     public void mappingTargetTest() {

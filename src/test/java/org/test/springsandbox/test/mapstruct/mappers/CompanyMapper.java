@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2017 - 2018 ICORE Software Development LLP
- * http://icode.kz
- */
 package org.test.springsandbox.test.mapstruct.mappers;
 
 import org.mapstruct.InheritInverseConfiguration;
@@ -13,14 +9,15 @@ import org.test.springsandbox.test.mapstruct.entities.Company;
 import org.test.springsandbox.test.mapstruct.entities.CompanyDTO;
 import org.test.springsandbox.web.dto.PersonDTO;
 
-@Mapper
+
+@Mapper(componentModel = "cdi")
 public interface CompanyMapper {
 
     @Mapping(target = "personal", source = "personList")
     @Mapping(target = "companyName", source = "name")
     void updateCompanyInfo(Company company, @MappingTarget CompanyDTO dto);
 
-    @InheritInverseConfiguration
+    @InheritInverseConfiguration(name = "updateCompanyInfo")
     void updateCompanyInfo(CompanyDTO dto, @MappingTarget Company entity);
 
     @Mapping(target = "personal", expression = "java(toDTO(company.getPersonList(), posName))")
