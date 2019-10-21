@@ -10,6 +10,7 @@ import org.test.springsandbox.test.mapstruct.entities.CompanyDTO;
 import org.test.springsandbox.test.mapstruct.mappers.CompanyMapperImpl;
 
 import javax.inject.Inject;
+import java.util.Collections;
 
 
 @RunWith(CdiRunner.class)
@@ -44,9 +45,9 @@ public class CompanyMapperTest {
     @Test
     public void severalParameters() {
         Company company = new Company();
-        company.setPersonList(new Person());
+        company.setPersonList(Collections.singletonList(new Person()));
 
         CompanyDTO dto = mapper.toDTO(company, "manager");
-        Assert.assertEquals("manager", dto.getPersonal().getPositionName());
+        Assert.assertEquals("manager", dto.getPersonal().get(0).getPositionName());
     }
 }

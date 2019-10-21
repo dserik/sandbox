@@ -17,7 +17,7 @@ public class SimpleRest {
     private final ApplicationContext applicationContext;
 
 
-    // для проверки времени, расхода памяти при зоздании прототипа
+    // для проверки времени, расхода памяти при создании прототипа
     @GetMapping
     @RequestMapping("/{name}")
     public ResponseEntity<String> get(@PathVariable String name) {

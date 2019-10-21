@@ -1,6 +1,7 @@
 package org.test.springsandbox.service.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
 import org.test.springsandbox.domain.Person;
 import org.test.springsandbox.service.mapper.resolver.PersonResolver;
@@ -13,8 +14,10 @@ import java.util.List;
         uses = {PersonResolver.class})
 public abstract class PersonMapper {
 
+    @Mapping(target = "positionName", ignore = true)
     public abstract PersonDTO toDto(Person entity);
 
+    @Mapping(target = "fullName", ignore = true)
     public abstract Person toEntity(PersonDTO dto);
 
     public abstract List<PersonDTO> toDto(List<Person> entities);
