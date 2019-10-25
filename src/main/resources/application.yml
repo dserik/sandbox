@@ -27,7 +27,11 @@ server:
   address: 0.0.0.0
   port: 8090
   servlet.session.cookie.name: xsession
-  forward-headers-strategy: framework
+  use-forward-headers: true
+
+sample-property:
+  name: test
+  value: 26
 
 ---
 
