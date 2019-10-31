@@ -45,4 +45,9 @@ public class SimpleRest {
         simpleService.changeTest();
     }
 
+    @GetMapping("/listeners")
+    public void triggerListeners() {
+        simpleService.testEventListeners();
+    }
+
 }
