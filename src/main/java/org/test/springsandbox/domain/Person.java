@@ -6,6 +6,7 @@ import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -30,6 +31,9 @@ public class Person {
     @Column(name = "birth_date")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
+
+    @OneToMany(mappedBy = "person")
+    private List<Clothes> clothes;
 
 }
 
