@@ -12,4 +12,6 @@ public class CompanyDTO {
     private String companyName;
     private String code;
     private List<PersonDTO> personal;
+
+    private SomeDTO sampleField;
 }

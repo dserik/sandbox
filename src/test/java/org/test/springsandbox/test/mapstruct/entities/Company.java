@@ -12,4 +12,6 @@ public class Company {
     private String name;
     private String code;
     private List<Person> personList;
+
+    private FirstImpl sampleField;
 }

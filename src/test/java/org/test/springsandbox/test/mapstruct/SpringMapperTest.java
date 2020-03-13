@@ -1,23 +1,27 @@
 package org.test.springsandbox.test.mapstruct;
 
-import org.jglue.cdiunit.CdiRunner;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.test.springsandbox.SpringSandboxApplication;
 import org.test.springsandbox.domain.Person;
 import org.test.springsandbox.test.mapstruct.entities.Company;
 import org.test.springsandbox.test.mapstruct.entities.CompanyDTO;
-import org.test.springsandbox.test.mapstruct.mappers.CompanyMapperImpl;
+import org.test.springsandbox.test.mapstruct.mappers.SpringCompanyMapper;
 
-import javax.inject.Inject;
 import java.util.Collections;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.MOCK,
+        classes = SpringSandboxApplication.class)
+public class SpringMapperTest {
 
-@RunWith(CdiRunner.class)
-public class CompanyMapperTest {
-
-    @Inject
-    private CompanyMapperImpl mapper;
+    @Autowired
+    private SpringCompanyMapper mapper;
 
     @Test
     public void mappingTargetTest() {

@@ -11,7 +11,6 @@ import org.test.springsandbox.service.mapper.resolver.PersonResolver;
 import org.test.springsandbox.web.dto.ClothesDTO;
 import org.test.springsandbox.web.dto.PersonDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings({"unused"})

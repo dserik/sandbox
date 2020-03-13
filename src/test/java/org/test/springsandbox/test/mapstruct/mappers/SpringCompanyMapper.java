@@ -1,17 +1,24 @@
+/*
+ * Copyright (c) 2017 - 2018 ICORE Software Development LLP
+ * http://icode.kz
+ */
 package org.test.springsandbox.test.mapstruct.mappers;
 
 import org.mapstruct.*;
 import org.test.springsandbox.domain.Person;
 import org.test.springsandbox.test.mapstruct.entities.Company;
 import org.test.springsandbox.test.mapstruct.entities.CompanyDTO;
+import org.test.springsandbox.test.mapstruct.entities.FirstImpl;
+import org.test.springsandbox.test.mapstruct.entities.SomeDTO;
+import org.test.springsandbox.test.mapstruct.resolvers.DictionaryResolver;
 import org.test.springsandbox.web.dto.PersonDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Mapper(componentModel = "cdi")
-public interface CompanyMapper {
+@Mapper(componentModel = "spring", uses = DictionaryResolver.class)
+public interface SpringCompanyMapper {
 
     @Mapping(target = "personal", source = "personList")
     @Mapping(target = "companyName", source = "name")
@@ -20,9 +27,12 @@ public interface CompanyMapper {
     @InheritInverseConfiguration(name = "updateCompanyInfo")
     void updateCompanyInfo(CompanyDTO dto, @MappingTarget Company entity);
 
+    FirstImpl map(SomeDTO dto);
+
+    @Mapping(target = "sampleField", source = "company.sampleField")
     @Mapping(target = "personal", expression = "java(toDTO(company.getPersonList(), posName))")
     @Mapping(target = "id", source = "company.id")
-    @Mapping(target = "code", source = "company.code")
+    @Mapping(target = "code", source = "company.code", resultType = String.class)
     @Mapping(target = "companyName", source = "company.name")
     CompanyDTO toDTO(Company company, String posName);
 
@@ -42,4 +52,6 @@ public interface CompanyMapper {
 
     @Mapping(target = "positionName", ignore = true)
     PersonDTO toDTO(Person person);
+
+    SomeDTO map(FirstImpl entity);
 }
