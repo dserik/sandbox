@@ -20,7 +20,7 @@
         <spring.datasource.url>jdbc:postgresql://localhost:5432/test_db?autoReconnect=true&amp;useUnicode=yes&amp;characterEncoding=UTF-8</spring.datasource.url>
         <spring.datasource.username>postgres</spring.datasource.username>
         <spring.datasource.password>example</spring.datasource.password>
-        <springfox.version>2.8.0</springfox.version>
+        <springfox.version>2.10.0</springfox.version>
         <swagger.core.version>1.5.23</swagger.core.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
     </properties>
